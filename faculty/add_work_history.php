@@ -1,5 +1,12 @@
 <?php
 $idnum=$_GET['fIDNumber'];
+
+require_once "dbconnect.php";
+
+$sql1 = "SELECT * FROM faculty_year;";
+$dbStatement = $dbconnection->prepare($sql1);
+$dbStatement->execute();
+$qResult1 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
@@ -22,9 +29,19 @@ $idnum=$_GET['fIDNumber'];
             </section>
 
             <section>
-            Year Ended:
-            <input type="text" name="companyYear">
-            </section>
+            Year Completed:
+            <select name="workYear">
+                <option hidden disabled selected value>
+                    select year
+                </option>
+                <?php
+                foreach ($qResult1 as $rowy) {
+                    echo "<option value='$rowy->fYear'>$rowy->fYear</option>";
+                }
+                ?>
+            </select>
+        </section>
+
             <button type="submit">
             Submit
             </button>

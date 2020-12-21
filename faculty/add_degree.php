@@ -14,6 +14,11 @@ $sql = "SELECT * FROM degree_program;";
 $dbStatement = $dbconnection->prepare($sql);
 $dbStatement->execute();
 $qResult = $dbStatement->fetchAll(PDO::FETCH_OBJ);
+
+$sql1 = "SELECT * FROM faculty_year;";
+$dbStatement = $dbconnection->prepare($sql1);
+$dbStatement->execute();
+$qResult1 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
@@ -46,7 +51,16 @@ $qResult = $dbStatement->fetchAll(PDO::FETCH_OBJ);
         </section>
         <section>
             Year Completed:
-            <input type="text" name="degreeYear">
+            <select name="degreeYear">
+                <option hidden disabled selected value>
+                    select year
+                </option>
+                <?php
+                foreach ($qResult1 as $rowy) {
+                    echo "<option value='$rowy->fYear'>$rowy->fYear</option>";
+                }
+                ?>
+            </select>
         </section>
         <button type="submit">
             Submit
