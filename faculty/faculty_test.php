@@ -1,7 +1,11 @@
 <?php
 require_once "dbconnect.php";
 
-$idnum = $_GET['userID'];
+if (isset($_GET['userID']) && !isset($_GET['fIDNumber'])) {
+    $idnum = $_GET['userID'];
+} elseif (isset($_GET['fIDNumber']) && !isset($_GET['userID'])) {
+    $idnum = $_GET['fIDNumber'];
+} else $idnum = $_GET['fIDNumber'];
 $sql = "SELECT * FROM faculty WHERE fIDNumber = ?;";
 $dbStatement = $dbconnection->prepare($sql);
 $dbStatement->execute(array($idnum));

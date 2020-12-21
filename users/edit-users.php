@@ -35,12 +35,10 @@ require 'edit-users-details.php';
                 <br><br>
 
                 <input type="submit" value="Update" name="update" onclick="window.location.href = 'user-list.php'">
-                <input type="submit" value="Delete" name="delete">
+                <input type="submit" value="Delete" name="delete" <?php echo ($_SESSION['loggedUser'] == $uName) ? 'disabled' : ''; ?>>
             </form>
         </section>
-        <?php
-        $temp = $_SESSION['curID'];
-        ?>
+        <?php $temp = $_SESSION['curID']; ?>
         <form action='http://localhost/FIS/users/user-list.php?userID=<?php echo $temp ?>' method="post">
             <button type="submit" value="View" name="create">View User List</button>
         </form>
@@ -48,10 +46,11 @@ require 'edit-users-details.php';
 
     <?php
 
-    function delFromTable($table, $dbconnection, $target)
+    function delFromTable($table, $dbconnection, $userid, $target)
     {
-        $sqlDelElements = 'DELETE FROM ' . $table . ' WHERE userID = ' . $target;
+        $sqlDelElements = 'DELETE FROM ' . $table . ' WHERE ' . $userid . ' = ?;';
         $dbStatement = $dbconnection->prepare($sqlDelElements);
+        $dbStatement->bindParam('1', $target, PDO::PARAM_STR);
         $dbStatement->execute();
     }
 
@@ -114,14 +113,14 @@ require 'edit-users-details.php';
         ];
 
         upUser($dbconnection, $userAcct);
-        delFromTable('usergroups', $dbconnection, $_SESSION['curID']);
+        delFromTable('usergroups', $dbconnection, 'userID', $_SESSION['curID']);
         addRole($dbconnection, $_SESSION['curID']);
     }
 
     if (isset($_POST['delete'])) {
-        delFromTable('usergroups', $dbconnection, $_SESSION['curID']);
-        delFromTable('users', $dbconnection, $_SESSION['curID']);
-        delFromTable('faculty', $dbconnection, $_SESSION['curID']);
+        delFromTable('usergroups', $dbconnection, 'userID', $_SESSION['curID']);
+        delFromTable('users', $dbconnection, 'userID', $_SESSION['curID']);
+        delFromTable('faculty', $dbconnection, 'fIDNumber', $_SESSION['curID']);
         echo 'deletion complete';
     }
 

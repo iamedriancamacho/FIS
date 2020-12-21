@@ -6,15 +6,18 @@ select * from faculty;
 select  * from authored_books;
 select * from books;
 
-SELECT * FROM books inner join authored_books on books.title = authored_books.title inner join faculty on authored_books.fIDNumber = faculty.fIDNumber where title like '%$searchKey%';
+SELECT * FROM books inner join authored_books on books.title = authored_books.title inner join faculty on authored_books.fIDNumber = faculty.fIDNumber where authored_books.title like '%alamat%';
 
 select * from books inner join authored_books on books.title = authored_books.title inner join faculty on authored_books.fIDNumber = faculty.fIDNumber where deptID = 'SCS';
 SELECT DISTINCT title FROM books WHERE title in (SELECT title FROM authored_books where fIDNumber = 1);
 select * from faculty inner join department on faculty.deptID = department.deptID;
 
+select * from users;
 select * from faculty;
 select * from degree;
 select * from department;
+
+select * from usergroups;
 
 create table department(
 deptID varchar(5) primary key,
@@ -41,14 +44,12 @@ fMiddleName varchar(50),
 foreign key (deptID) references department(deptID)
 on delete set null on update cascade
 );
-drop table faculty;
+#drop table faculty;
 
-select count(userID) from users;
 select * from users;
 select * from faculty;
-delete from faculty where fIDNumber='8';
+#delete from faculty where fIDNumber='8';
 
-select count(userID) from users;
 # alter table faculty add fMiddleName varchar(50);
 insert into faculty values('1','Onin','Pantaleon','onin@gmail.com','SCS','T');
 insert into faculty values('2','Wesley','Gamponia','wesley@gmail.com','SCS','V');
@@ -77,10 +78,6 @@ pubName varchar(255),
 pubType varchar(255)
 );
 
-drop table publication;
-drop table books;
-drop table author_books;
-
 create table course(
 courseID varchar(5) primary key,
 courseDesc varchar(255) not null,
@@ -105,7 +102,6 @@ fIDNumber varchar(8),
 foreign key (fIDNumber) references faculty(fIDNumber) on delete set null on update cascade
 );
 
-select * from award;
 create table award(
 awardID int auto_increment primary key,
 awardDesc varchar(255),
@@ -113,9 +109,8 @@ awardMonth varchar(255),
 awardDate varchar(5),
 awardYear varchar(4)
 );
-select * from usergroups;
 
-SELECT DISTINCT awardDesc,awardMonth,awardDate,awardYear FROM award WHERE awardDesc in (SELECT awardDesc FROM grant_recipeints where fIDNumber = 1);
+#SELECT DISTINCT awardDesc,awardMonth,awardDate,awardYear FROM award WHERE awardDesc in (SELECT awardDesc FROM grant_recipeints where fIDNumber = 1);
 
 create table grant_recipeints(
 awardDesc varchar(255),
@@ -136,7 +131,6 @@ title varchar(255),
 foreign key (fIDNumber) references faculty(fIDNumber) on delete set null on update cascade
 );	
 
-
 create table degree_program(
 degreeID int auto_increment primary key,
 degree varchar(255)
@@ -150,6 +144,7 @@ select * from publication;
 insert into publication_type(pubType) values('novel');
 insert into publication_type(pubType) values('journal');
 select * from publication_type;
+
 #wla nako gi insert
 select * from course;
 insert into course values('1','Web','Friday','3:00 - 6:00','MS Teams');
@@ -232,8 +227,7 @@ create table faculty_year(
 fYear varchar(4)
 );
 
-
-drop procedure if exists addDate;
+#drop procedure if exists addDate;
 delimiter $$
 create procedure addDate()
 begin
@@ -249,7 +243,7 @@ delimiter ;
 
 call addDate();
 
-drop procedure if exists addYear;
+#drop procedure if exists addYear;
 delimiter $$
 create procedure addYear()
 begin
@@ -264,7 +258,6 @@ end $$
 delimiter ;
 
 call addYear();
-
 
 select * from faculty_year;
 select * from faculty_dfacultydegreeate;
