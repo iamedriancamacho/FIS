@@ -9,6 +9,22 @@ if ($dbStatement->rowCount() > 0) {
 } else {
     header('Location:http://localhost');
 }
+
+$sql1 = "SELECT * FROM faculty_month;";
+$dbStatement = $dbconnection->prepare($sql1);
+$dbStatement->execute();
+$qResult1 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
+
+$sql2 = "SELECT * FROM faculty_date;";
+$dbStatement = $dbconnection->prepare($sql2);
+$dbStatement->execute();
+$qResult2 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
+
+$sql3 = "SELECT * FROM faculty_year;";
+$dbStatement = $dbconnection->prepare($sql3);
+$dbStatement->execute();
+$qResult3 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
+
 ?>
 
 
@@ -32,19 +48,47 @@ if ($dbStatement->rowCount() > 0) {
         </section>
 
         <section>
-            Award Month:
-            <input type="text" name="awardMonth">
-        </section>
+                Award Month:
+                <select name="awardMonth">
+                    <option hidden disabled selected value>
+                        choose a month
+                    </option>
+                    <?php
+                    foreach ($qResult1 as $rowmon) {
+                        echo "<option value='$rowmon->fMonth'>$rowmon->fMonth</option>";
+                    }
+                    ?>
+                </select>
+            </section>
 
-        <section>
-            Award Date:
-            <input type="text" name="awardDate">
-        </section>
+            <section>
+                Award Date:
+                <select name="awardDate">
+                    <option hidden disabled selected value>
+                        choose a date
+                    </option>
+                    <?php
+                    foreach ($qResult2 as $rowd) {
+                        echo "<option value='$rowd->fDate'>$rowd->fDate</option>";
+                    }
+                    ?>
+                </select>
+            </section>
 
-        <section>
-            Award Year:
-            <input type="text" name="awardYear">
-        </section>
+            <section>
+                Award Year:
+                <select name="awardYear">
+                    <option hidden disabled selected value>
+                        choose a year
+                    </option>
+                    <?php
+                    foreach ($qResult3 as $rowy) {
+                        echo "<option value='$rowy->fYear'>$rowy->fYear</option>";
+                    }
+                    ?>
+                </select>
+            </section>
+
         <button type="submit">
             Submit
         </button>

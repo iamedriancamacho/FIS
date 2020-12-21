@@ -36,9 +36,11 @@ fFirstName varchar (255) not null,
 fLastName varchar (255) not null,
 fEmailAdd varchar(255),
 deptID varchar(5),
+fMiddleName varchar(50),
 foreign key (deptID) references department(deptID)
 on delete set null on update cascade
 );
+drop table faculty;
 
 select count(userID) from users;
 select * from users;
@@ -132,6 +134,7 @@ title varchar(255),
 foreign key (fIDNumber) references faculty(fIDNumber) on delete set null on update cascade
 );	
 
+
 create table degree_program(
 degreeID int auto_increment primary key,
 degree varchar(255)
@@ -202,3 +205,67 @@ insert into degree_program(degree) values('Bachelor of Science in ENTERTAINMENT 
 insert into degree_program(degree) values('Bachelor of Science in INFORMATION TECHNOLOGY');
 insert into degree_program(degree) values('Bachelor of Science in INFORMATION SYSTEMS');
 select * from degree_program;
+
+create table faculty_month(
+fMonth varchar(255)
+);
+
+insert into faculty_month values('January');
+insert into faculty_month values('Febuary');
+insert into faculty_month values('March');
+insert into faculty_month values('April');
+insert into faculty_month values('May');
+insert into faculty_month values('June');
+insert into faculty_month values('July');
+insert into faculty_month values('August');
+insert into faculty_month values('September');
+insert into faculty_month values('October');
+insert into faculty_month values('November');
+insert into faculty_month values('December');
+
+create table faculty_date(
+fDate varchar(2)
+);
+create table faculty_year(
+fYear varchar(4)
+);
+
+
+drop procedure if exists addDate;
+delimiter $$
+create procedure addDate()
+begin
+declare fdate int default 1;
+repeat
+	insert into faculty_date values (fdate);
+	set fdate = fdate + 1;
+    until fdate = 32
+end repeat;
+
+end $$
+delimiter ;
+
+call addDate();
+
+drop procedure if exists addYear;
+delimiter $$
+create procedure addYear()
+begin
+declare fyear int default 1980;
+repeat
+	insert into faculty_year values (fyear);
+	set fyear = fyear + 1;
+    until fyear = 2021
+end repeat;
+
+end $$
+delimiter ;
+
+call addYear();
+
+
+select * from faculty_year;
+select * from faculty_date;
+
+
+
