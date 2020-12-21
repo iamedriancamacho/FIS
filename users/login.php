@@ -1,6 +1,6 @@
 <?php
-  session_start();
-  require_once 'dbconnect.php';
+session_start();
+require_once 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +58,11 @@
         </section>
     </div>
 </body>
+
 </html>
 
-<?php 
-if(isset($_GET['login'])){
+<?php
+if (isset($_GET['login'])) {
     echo 'ambotwt';
     $inputUname = $_GET['uname'];
     $inputPassWord = $_GET['psw'];
@@ -72,51 +73,53 @@ if(isset($_GET['login'])){
     $dbStatement->execute();
     $result = $dbStatement->fetch(PDO::FETCH_ASSOC);
 
-    if(!$result){
-        header("Location:".$_SERVER['HTTP_REFERER']."?loginFailed=true");
-    }
-    else {
-          if(password_verify($inputPassWord,$result['userPass'])){
-              $_SESSION['loggedUser'] = $result['userName'];  
+    if (!$result) {
+        header("Location:" . $_SERVER['HTTP_REFERER'] . "?loginFailed=true");
+    } else {
+        if (password_verify($inputPassWord, $result['userPass'])) {
+            $_SESSION['loggedUser'] = $result['userName'];
 
-              $sqlGetRoles = "SELECT * FROM users INNER JOIN usergroups ON users.userID = usergroups.userID INNER JOIN groupslist ON usergroups.roleID = groupslist.roleID WHERE users.userID = " . $result['userID'];
-              $result2 = $dbconnection->query($sqlGetRoles);
+            $sqlGetRoles = "SELECT * FROM users INNER JOIN usergroups ON users.userID = usergroups.userID INNER JOIN groupslist ON usergroups.roleID = groupslist.roleID WHERE users.userID = " . $result['userID'];
+            $result2 = $dbconnection->query($sqlGetRoles);
 
-              $cnt = 0;
-              while ($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
-                  $roles[$cnt] = $row2['roleID'];
-                  $cnt++;
-              }
+            $cnt = 0;
+            while ($row2 = $result2->fetch(PDO::FETCH_ASSOC)) {
+                $roles[$cnt] = $row2['roleID'];
+                $cnt++;
+            }
 
-              $isAdmin = 0;
-              $isUnivOff = 0;
-              $isStudent = 0;
-              $isFaculty = 0;
-              for($i = 0; $i < sizeof($roles); $i++){
-                    if($roles[$i]==0)
-                        $isAdmin = 1;
-                    else if ($roles[$i]==1)
-                        $isUnivOff = 1;
-                    else if ($roles[$i]==2)
-                        $isFaculty = 1;
-                    else if ($roles[$i]==3 || $roles[$i]==4)
-                        $isStudent = 1;
-              }
+            $isAdmin = 0;
+            $isUnivOff = 0;
+            $isStudent = 0;
+            $isFaculty = 0;
+            for ($i = 0; $i < sizeof($roles); $i++) {
+                if ($roles[$i] == 0)
+                    $isAdmin = 1;
+                else if ($roles[$i] == 1)
+                    $isUnivOff = 1;
+                else if ($roles[$i] == 2)
+                    $isFaculty = 1;
+                else if ($roles[$i] == 3 || $roles[$i] == 4)
+                    $isStudent = 1;
+            }
 
-              if($isAdmin==1)
-                header("Location:http://localhost/FIS/univadmin/univhome.php");
-              else if ($isUnivOff==1)
-                header("Location:http://localhost/FIS/univadmin/univhome.php");
-              else if ($isFaculty==1)
-                header("Location:http://localhost/FIS/faculty/facultyhome.php");
-              else if ($isStudent==1)
-                header("Location:http://localhost/FIS/students/studenthome.php");
-          }
-          else{
+            if ($isAdmin == 1)
+                header("Location:http://localhost/FIS/univadmin/univhome.php?userID=" . $result['userID']);
+            else if ($isUnivOff == 1)
+                header("Location:http://localhost/FIS/univadmin/univhome.php?userID=" . $result['userID']);
+            else if ($isFaculty == 1)
+                header("Location:http://localhost/FIS/faculty/facultyhome.php?userID=" . $result['userID']);
+            else if ($isStudent == 1)
+                header("Location:http://localhost/FIS/students/studenthome.php?userID=" . $result['userID']);
+        } else {
 ?>
-            <script> alert("Incorrect details. Please try again."); window.history.back();</script>
+            <script>
+                alert("Incorrect details. Please try again.");
+                window.history.back();
+            </script>
 <?php
-          }
+        }
     }
 }
+
 ?>

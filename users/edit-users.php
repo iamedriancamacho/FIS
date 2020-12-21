@@ -121,6 +121,8 @@ require 'edit-users-details.php';
     if (isset($_POST['delete'])) {
         delFromTable('usergroups', $dbconnection, $_SESSION['curID']);
         delFromTable('users', $dbconnection, $_SESSION['curID']);
+        delFromTable('faculty', $dbconnection, $_SESSION['curID']);
+        echo 'deletion complete';
     }
 
     ?>
