@@ -4,8 +4,9 @@ session_start();
 if (isset($_POST['edit']))
   $_SESSION['curID'] = $_POST['edit'];
 
-  $sqlGetUserDetails = "SELECT * FROM users WHERE userID = " . $_SESSION['curID'];"";
+  $sqlGetUserDetails = "SELECT * FROM users WHERE userID = ?;";
   $dbStatement = $dbconnection->prepare($sqlGetUserDetails);
+  $dbStatement->bindParam('1', $_SESSION['curID'], PDO::PARAM_STR);
   $dbStatement->execute();
   $result = $dbStatement->fetch(PDO::FETCH_ASSOC);
 
