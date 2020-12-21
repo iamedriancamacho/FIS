@@ -34,6 +34,7 @@ $qResult = $dbStatement->fetchAll(PDO::FETCH_OBJ);
                 <td><?php echo $rowfaculty->fEmailAdd ?></td>
                 <td><?php echo $rowfaculty->deptID ?></td>
                 <td><a href="<?php echo '../faculty/facultyhome.php?userID=', $rowfaculty->fIDNumber ?>">Open</a></td>
+                <td><a href="<?php echo '../faculty/delete_faculty.php?userID=', $rowfaculty->fIDNumber ?>">Delete</a></td>
             </tr>
 
         <?php
