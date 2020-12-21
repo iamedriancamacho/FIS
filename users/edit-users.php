@@ -48,9 +48,8 @@ require 'edit-users-details.php';
 
     function delFromTable($table, $dbconnection, $target)
     {
-        $sqlDelElements = 'DELETE FROM ' . $table . ' WHERE userID = ?;';
+        $sqlDelElements = 'DELETE FROM ' . $table . ' WHERE userID = ' . $target;
         $dbStatement = $dbconnection->prepare($sqlDelElements);
-        $dbStatement->bindParam('1', $target, PDO::PARAM_STR);
         $dbStatement->execute();
     }
 
