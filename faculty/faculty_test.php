@@ -8,7 +8,8 @@ $dbStatement->execute(array($idnum));
 if ($dbStatement->rowCount() > 0) {
     $result = $dbStatement->fetch(PDO::FETCH_ASSOC);
 } else {
-    header('Location:http://localhost');
+    //header('Location:http://localhost');
+    echo 'wako kasulod';
 }
 
 $sql3 = "SELECT * FROM degree WHERE fIDNumber=?;";
@@ -56,7 +57,7 @@ $qResult4 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
 <body class="main-body">
     <nav class="body-header-2">FACULTY</nav>
     <div class="univAdminList">
-        <?php echo $result['fIDNumber'], ' ', $result['fLastName'], ' ', $result['fFirstName'];
+        <?php echo $idnum, ' ', $result['fLastName'], ' ', $result['fFirstName'];
         echo '<br> Degree: <br>';
         foreach ($qResult3 as $rowdegree) {
             echo $rowdegree->degree, '<br>';

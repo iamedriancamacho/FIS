@@ -6,6 +6,7 @@ select * from faculty;
 select  * from authored_books;
 select * from books;
 
+SELECT * FROM books inner join authored_books on books.title = authored_books.title inner join faculty on authored_books.fIDNumber = faculty.fIDNumber where title like '%$searchKey%';
 
 select * from books inner join authored_books on books.title = authored_books.title inner join faculty on authored_books.fIDNumber = faculty.fIDNumber where deptID = 'SCS';
 SELECT DISTINCT title FROM books WHERE title in (SELECT title FROM authored_books where fIDNumber = 1);
@@ -45,6 +46,7 @@ drop table faculty;
 select count(userID) from users;
 select * from users;
 select * from faculty;
+delete from faculty where fIDNumber='8';
 
 select count(userID) from users;
 # alter table faculty add fMiddleName varchar(50);
@@ -147,7 +149,7 @@ select * from publication;
 
 insert into publication_type(pubType) values('novel');
 insert into publication_type(pubType) values('journal');
-
+select * from publication_type;
 #wla nako gi insert
 select * from course;
 insert into course values('1','Web','Friday','3:00 - 6:00','MS Teams');
@@ -265,7 +267,7 @@ call addYear();
 
 
 select * from faculty_year;
-select * from faculty_date;
+select * from faculty_dfacultydegreeate;
 
 
 

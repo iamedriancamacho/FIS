@@ -1,12 +1,12 @@
 <?php
 require_once 'dbconnect.php';
 // count userID
-$sqlCount = "SELECT count(userID) from users";
+$sqlCount = "SELECT userID from users ORDER BY userID DESC";
 $dbStatement = $dbconnection->prepare($sqlCount);
 $dbResult = $dbStatement->execute();
 $qCount = $dbStatement->fetch(PDO::FETCH_ASSOC);
 
-$idNum = $qCount['count(userID)'];
+$idNum = $qCount['userID'];
 $tempemail = $_GET['email'];
 $tempdep = $_GET['group'];
 //THIS PART WONT GO TO INSERT

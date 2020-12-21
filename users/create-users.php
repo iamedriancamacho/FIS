@@ -123,7 +123,7 @@ $tempMessage = '';
                             //THIS IS THE PORTAL FOR FACULTY
         ?> <section class='cuser'>
                                 <?php require 'create-faculty-portal.php'; ?>
-                                ?>
+
                             </section> <?php
                                     }
                                     $sqlAssignRole = 'INSERT INTO usergroups VALUES(null,?,?)';

@@ -2,11 +2,12 @@
 require_once 'dbconnect.php';
 
 // count userID
-$sqlCount = "SELECT count(userID) from users";
+$sqlCount = "SELECT userID from users ORDER BY userID DESC";
 $dbStatement = $dbconnection->prepare($sqlCount);
 $dbResult = $dbStatement->execute();
 $qCount = $dbStatement->fetch(PDO::FETCH_ASSOC);
 
+echo $qCount['userID'];
 ?>
 
 <body>
@@ -37,7 +38,7 @@ $qCount = $dbStatement->fetch(PDO::FETCH_ASSOC);
 <?php
 $sqlportal = "INSERT INTO faculty(fIDNumber, fFirstName, fLastName, fEmailAdd, deptID) VALUES(?,?,?,?,?);";
 $dbStatement = $dbconnection->prepare($sqlportal);
-$dbStatement->bindParam(1, $qCount['count(userID)'], PDO::PARAM_STR);
+$dbStatement->bindParam(1, $qCount['userID'], PDO::PARAM_STR);
 $dbStatement->bindParam(2, $_POST['fname'], PDO::PARAM_STR);
 $dbStatement->bindParam(3, $_POST['lname'], PDO::PARAM_STR);
 $dbStatement->bindParam(4, $_POST['email'], PDO::PARAM_STR);
