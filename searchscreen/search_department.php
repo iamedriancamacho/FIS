@@ -1,8 +1,8 @@
 <?php
 require_once 'dbconnect.php';
 
-$searchKey = $_GET['gsearch'];
-if ($_GET['gsearch'] == '') {
+$searchKey = $_POST['gsearch'];
+if ($_POST['gsearch'] == '') {
     $sql = "SELECT * FROM department;";
 } else $sql = "SELECT * FROM department where deptName like '%$searchKey%';";
 

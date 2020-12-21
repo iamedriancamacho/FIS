@@ -50,7 +50,7 @@ $workhisg = 'work_history';
             <!-- HTML STARTS HERE -->
 
 
-            <form action="searchscreen.php" method="GET">
+            <form action="searchscreen.php?userID=<?php echo $idnum ?>" method="POST">
                 <select name="group" id="group">
                     <option value="users">Users</option>
                     <option value="department">Department</option>
@@ -63,8 +63,8 @@ $workhisg = 'work_history';
                 <label for="gsearch">Search:</label>
                 <?php
                 $searchKey = '';
-                if (isset($_GET['gsearch'])) {
-                    $searchKey = $_GET['gsearch'];
+                if (isset($_POST['gsearch'])) {
+                    $searchKey = $_POST['gsearch'];
                 }
                 ?>
                 <input type="search" id="gsearch" name="gsearch" value=<?php echo $searchKey ?>>
@@ -76,28 +76,28 @@ $workhisg = 'work_history';
         <section class='univAdminList'>
             <?php
 
-            if (isset($_GET['gsearch'])) {
-                if ($_GET['group'] == 'users') {
+            if (isset($_POST['gsearch'])) {
+                if ($_POST['group'] == 'users') {
                     require 'search_users.php';
                 }
                 //
-                if ($_GET['group'] == 'department') {
+                if ($_POST['group'] == 'department') {
                     require 'search_department.php';
                 }
                 //
-                if ($_GET['group'] == 'publication') {
+                if ($_POST['group'] == 'publication') {
                     require 'search_publication.php';
                 }
                 //
-                if ($_GET['group'] == 'publication_type') {
+                if ($_POST['group'] == 'publication_type') {
                     require 'search_publicationtype.php';
                 }
                 //
-                if ($_GET['group'] == 'authored_books') {
+                if ($_POST['group'] == 'authored_books') {
                     require 'search_authorbooks.php';
                 }
                 //
-                if ($_GET['group'] == 'work_history') {
+                if ($_POST['group'] == 'work_history') {
                     require 'search_workhistory.php';
                 }
                 //

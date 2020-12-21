@@ -1,8 +1,8 @@
 <?php
 require_once 'dbconnect.php';
 
-$searchKey = $_GET['gsearch'];
-if ($_GET['gsearch'] == '') {
+$searchKey = $_POST['gsearch'];
+if ($_POST['gsearch'] == '') {
     $sql = "SELECT * FROM authored_books inner join faculty where authored_books.fIDNumber = faculty.fIDNumber;";
 } else $sql = "SELECT * FROM authored_books inner join faculty on faculty.fIDNumber = authored_books.fIDNumber where title like '%$searchKey%';";
 
