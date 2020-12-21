@@ -1,0 +1,198 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    
+}
+
+ul{ 
+    list-style-type: none;
+    padding: 40px 10px;
+    text-align: center;
+    box-shadow: 0 4px 5px -2px rgba(0,0,0,0.22), 0 2px 1px -1px rgba(0,0,0,0.05);
+ 
+}
+
+li{
+    display: inline-block;
+}
+
+
+a#islink{
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    color: red
+
+}
+
+a#islink:hover{
+    background-color: gold;
+    padding: 10px 20px;
+    transition: 0.5s;
+}
+
+a#isgroup{
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    color: black
+
+}
+
+a#isgroup:hover{
+    background-color: gold;
+    padding: 10px 20px;
+    transition: 0.5s;
+}
+
+
+
+ /* a{
+    font-size: 1.2vw;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 20px;
+    color: brown;
+}
+
+
+a:hover{
+    background-color: gold;
+    padding: 20px 40px;
+    transition: 0.5s;
+}   */
+
+.main-body{
+    height: 1000px;
+    
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(255, 255, 255)), url("../assets/christmasusjr.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.body-header-1{
+    color: #0d3e21;
+    padding-top: 5%;
+text-align: center;
+    font-size: 40px;
+}
+
+.body-header-2{
+    text-shadow: black;
+    color:#fec039;
+    text-align: center;
+    font-size: 80px;
+    font-weight: bolder;
+}
+.body-header-button{
+    margin-top: 3%;
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 1%;
+    width: 10%;
+    color: #fec039;
+    background-color: #0d3e21;
+    border: none;
+}
+
+/* login */
+
+.login{
+    color:white;
+    margin: auto;
+    padding: 20px;
+    height: 300px;
+    width: 30%;
+    background-color: #0d3e21;
+}
+
+.forCommon{
+    color: white;
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+    /* background-color: #0d3e21; */
+}
+
+.cuser{
+    color:white;
+    margin: auto;
+padding: 20px;
+    width: 30%;
+    background-color: #0d3e21; 
+}
+
+.errorM{
+    text-shadow: black;
+    color:red;
+    margin-top: 3%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+ table, th {
+     color: #fec039;
+    /* border: 1px solid #fec039; */
+    background-color:  #0d3e21;
+}
+
+.forList{
+    width: 75%;
+    margin: auto;
+    color: white;
+}
+.forList2{
+    width: 50%;
+    margin: auto;
+    color: white;
+    background-color:  #0d3e21;
+}
+
+.univAdminList table{
+    padding: 1%;
+    width: 70%;
+    margin: auto;
+    color: white;
+    background-color:  #0d3e21;
+}
+
+.univAdminList button {
+    color: white;
+    font-size: 1.2vw;
+    padding: 1%;
+    background-color: #fec039;
+
+}
+.univAdminList button a {
+    color: white;
+text-decoration: none;
+}
+
+.sectionB{
+    align-self: center;
+    width: 70%;
+
+margin: auto;
+}
+
+.forButtons a{
+    color: white;
+    font-size: 1.2vw;
+    padding: 1%;
+    background-color: #fec039;
+    color: sandybrown;
+}
+
+h3{
+    color: gold;
+    text-shadow: black;
+    text-align: center;
+}
+
+
+
+
