@@ -12,7 +12,6 @@ require 'edit-users-details.php';
 </head>
 
 <body>
-    <?php require '../checkGroup.php'; ?>
     <nav class="body-header-2">EDIT USERS</nav>
     <div class="main-body">
         <section style="text-align: center;">
@@ -39,7 +38,10 @@ require 'edit-users-details.php';
                 <input type="submit" value="Delete" name="delete">
             </form>
         </section>
-        <form action="user-list.php" method="post">
+        <?php
+        $temp = $_SESSION['curID'];
+        ?>
+        <form action='http://localhost/FIS/users/user-list.php?userID=<?php echo $temp ?>' method="post">
             <button type="submit" value="View" name="create">View User List</button>
         </form>
     </div>
@@ -125,5 +127,7 @@ require 'edit-users-details.php';
     </br></br>
 
 </body>
+
+
 
 </html>

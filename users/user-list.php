@@ -1,5 +1,6 @@
 <?php
 require_once 'dbconnect.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +15,13 @@ require_once 'dbconnect.php';
 </head>
 
 <body>
+    <?php require "../checkGroup.php"; ?>
     <nav class="body-header-2">USER LIST</nav>
     <div class="main-body">
+        <!-- <?php
+                $temp = $_SESSION['curID'];
+                echo $temp;
+                ?> -->
         <form method="post" action="edit-users.php" class="forList">
             <table name="userTable;" class="forTable">
                 <tr>
