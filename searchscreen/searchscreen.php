@@ -1,7 +1,7 @@
 <?php
 require_once 'dbconnect.php';
 
-$idnum = 1;
+$idnum = $_GET['userID'];
 $sql = "SELECT * from users inner join usergroups on users.userID = usergroups.userID inner join groupslist on usergroups.roleID = groupslist.roleID where users.userID = $idnum;";
 $dbStatement = $dbconnection->prepare($sql);
 $dbStatement->bindParam(1, $idnum, PDO::PARAM_INT);

@@ -109,8 +109,8 @@ if (isset($_GET['loginFailed'])) {
 
                     if ($isAdmin == 1)
                         header("Location:http://localhost/FIS/univadmin/univhome.php?userID=" . $result['userID']);
-                    //   else if ($isFaculty)
-                    //insert home sa faculty because i did not see faculty home 
+                    else if ($isFaculty == 1)
+                        header("Location:http://localhost/FIS/faculty/facultyhome.php?userID=" . $result['userID']);
                     else if ($isStudent == 1)
                         header("Location:http://localhost/FIS/students/studenthome.php?userID=" . $result['userID']);
                 } else {
