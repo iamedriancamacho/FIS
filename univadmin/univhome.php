@@ -18,6 +18,11 @@ require_once 'dbconnect.php';
     <nav class="body-header-2">UNIVERSITY OFFICIAL</nav>
 
     <div class="main-body">
+
+        <section class="univAdminList" style="text-align: center;">
+            <button><a href="../users/user-list.php?userID=<?php echo $_GET['userID'] ?> ">View Users</a></button>
+        </section>
+        <br>
         <section class="univAdminList">
             <?php require "../faculty/faculty_list.php"; ?>
         </section>
@@ -26,7 +31,7 @@ require_once 'dbconnect.php';
         <section class="univAdminList">
             <?php require 'univ_publication_list.php' ?>
         </section>
-
+        <br>
     </div>
 </body>
 

@@ -27,7 +27,7 @@ $qResult = $dbStatement->fetchAll(PDO::FETCH_OBJ);
                 <td><?php echo $row->deptID ?></td>
                 <td><?php echo $row->deptName ?></td>
                 <td><?php echo $row->telephoneNumber ?></td>
-                <td><?php echo $row->address ?></td>
+                <td><?php echo $row->deptAddress ?></td>
             </tr>
 
         <?php
