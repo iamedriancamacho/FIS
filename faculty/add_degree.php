@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "dbconnect.php";
 $idnum = $_GET['fIDNumber'];
 $sql = "SELECT * FROM faculty WHERE fIDNumber = ?;";
@@ -25,6 +26,10 @@ $qResult1 = $dbStatement->fetchAll(PDO::FETCH_OBJ);
 <html>
 
 <body>
+    <?php
+    echo $_SESSION['curID'];
+
+    ?>
     <form action="add_degree_process.php" method="post">
         <section>
             Faculty ID:

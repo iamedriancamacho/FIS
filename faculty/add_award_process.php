@@ -28,7 +28,7 @@ $dbResult = $dbStatement->execute();
 </head>
 
 <body>
-   <button><a href="<?php echo 'facultyhome.php?userID=', $_POST['fIDNumber'] ?>">Go Back</a></button>
+   <button><a href="<?php echo 'http://localhost/FIS/faculty/facultyhome.php?userID=', $_POST['fIDNumber'] ?>">Go Back</a></button>
 </body>
 
 </html>
