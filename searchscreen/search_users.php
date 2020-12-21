@@ -14,14 +14,14 @@ require_once 'dbconnect.php';
 
         <?php
 
-        $searchKey = $_GET['gsearch'];
-        if ($_GET['gsearch'] == '') {
+        $searchKey = $_POST['gsearch'];
+        if ($_POST['gsearch'] == '') {
             $sqlGetRowData = "SELECT * FROM users;";
         } else $sqlGetRowData = "SELECT * FROM users where userFirstName like '%$searchKey%';";
 
 
 
-        
+
         $result = $dbconnection->query($sqlGetRowData);
 
         if ($result->rowCount() > 0) {

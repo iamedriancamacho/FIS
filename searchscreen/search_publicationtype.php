@@ -1,8 +1,8 @@
 <?php
 require_once 'dbconnect.php';
 
-$searchKey = $_GET['gsearch'];
-if ($_GET['gsearch'] == '') {
+$searchKey = $_POST['gsearch'];
+if ($_POST['gsearch'] == '') {
     $sql = "SELECT * FROM publication_type;";
 } else $sql = "SELECT * FROM publication_type where pubType like '%$searchKey%';";
 

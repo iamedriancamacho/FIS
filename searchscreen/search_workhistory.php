@@ -1,8 +1,8 @@
 <?php
 require 'dbconnect.php';
 
-$searchKey = $_GET['gsearch'];
-if ($_GET['gsearch'] == '') {
+$searchKey = $_POST['gsearch'];
+if ($_POST['gsearch'] == '') {
     $sql = "SELECT * FROM publication_type;";
 } else $sql = "SELECT * FROM work_history inner join faculty on work_history.fIDNumber = faculty.fIDNumber where companyPosition like '%$searchKey%';";
 
